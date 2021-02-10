@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="partials/header :: head">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -8,21 +8,22 @@
     <title>Roll Some Dice</title>
 </head>
 <body>
+<div class="container">
+    <h1>Let's roll some dice!</h1>
 
-<h1>Let's roll some dice!</h1>
+    <h3>Pick a number to guess.</h3>
 
-<h3>Click on a number to guess.</h3>
-
-<main>
-    <div>
-        <h3><a th:href="@{/roll-dice/1}">1</a></h3>
-        <h3><a th:href="@{/roll-dice/2}">2</a></h3>
-        <h3><a th:href="@{/roll-dice/3}">3</a></h3>
-        <h3><a th:href="@{/roll-dice/4}">4</a></h3>
-        <h3><a th:href="@{/roll-dice/5}">5</a></h3>
-        <h3><a th:href="@{/roll-dice/6}">6</a></h3>
-    </div>
-</main>
+    <main>
+        <div>
+            <h3><a th:href="@{/roll-dice/1}">1</a></h3>
+            <h3><a th:href="@{/roll-dice/2}">2</a></h3>
+            <h3><a th:href="@{/roll-dice/3}">3</a></h3>
+            <h3><a th:href="@{/roll-dice/4}">4</a></h3>
+            <h3><a th:href="@{/roll-dice/5}">5</a></h3>
+            <h3><a th:href="@{/roll-dice/6}">6</a></h3>
+        </div>
+    </main>
+</div>
 
 </body>
 </html>
