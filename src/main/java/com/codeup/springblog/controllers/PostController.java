@@ -29,7 +29,7 @@ public class PostController {
     @GetMapping(path = "/posts/{id}")
     public String indexById(Model model) {
         Post post = new Post(1, "Blogging is neat!", "This is a post. I will make more!");
-        model.addAttribute("title", "Single Posts");
+        model.addAttribute("title", "Single Post");
         model.addAttribute("post", post);
         return "posts/show";
     }
