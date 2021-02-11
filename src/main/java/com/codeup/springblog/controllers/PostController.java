@@ -1,24 +1,37 @@
 package com.codeup.springblog.controllers;
 
+import com.codeup.springblog.models.Post;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class PostController {
 
-    @RequestMapping(path = "/posts", method = RequestMethod.GET)
-    @ResponseBody
-    public String index() {
-        return "posts index page";
+    @GetMapping(path = "/posts")
+    public String index(Model model) {
+        Post post1 = new Post(1, "First blog!", "This is a posting for stuff!");
+        Post post2 = new Post(2, "Second blog.", "Still kinda neat...");
+
+        List<Post> postedList = new ArrayList<>();
+        postedList.add(post1);
+        postedList.add(post2);
+
+        model.addAttribute("title", "All Posts");
+        model.addAttribute("posts", postedList);
+
+        return "posts/index";
     }
 
-    @RequestMapping(path = "/posts/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    public String indexById(@PathVariable long id) {
-        return "view an individual page";
+    @GetMapping(path = "/posts/{id}")
+    public String indexById(Model model) {
+        Post post = new Post(1, "Blogging is neat!", "This is a post. I will make more!");
+        model.addAttribute("title", "Single Posts");
+        model.addAttribute("post", post);
+        return "posts/show";
     }
 
     @RequestMapping(path = "/posts/create", method = RequestMethod.GET)
