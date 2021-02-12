@@ -11,19 +11,19 @@
 
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<div class="container">
+<div class="container-fluid" style="text-align: center">
     <h1>Let's roll some dice!</h1>
 
     <h3>Pick a number to guess.</h3>
 
     <main>
         <div>
-            <h3><a th:href="@{/roll-dice/1}">1</a></h3>
-            <h3><a th:href="@{/roll-dice/2}">2</a></h3>
-            <h3><a th:href="@{/roll-dice/3}">3</a></h3>
-            <h3><a th:href="@{/roll-dice/4}">4</a></h3>
-            <h3><a th:href="@{/roll-dice/5}">5</a></h3>
-            <h3><a th:href="@{/roll-dice/6}">6</a></h3>
+            <a class="btn btn-warning btn-sm" th:href="@{/roll-dice/1}">1</a>
+            <a class="btn btn-warning btn-sm" th:href="@{/roll-dice/2}">2</a>
+            <a class="btn btn-warning btn-sm" th:href="@{/roll-dice/3}">3</a>
+            <a class="btn btn-warning btn-sm" th:href="@{/roll-dice/4}">4</a>
+            <a class="btn btn-warning btn-sm" th:href="@{/roll-dice/5}">5</a>
+            <a class="btn btn-warning btn-sm" th:href="@{/roll-dice/6}">6</a>
         </div>
     </main>
 </div>

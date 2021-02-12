@@ -5,14 +5,30 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<!--    <title th:text="${title}"></title>-->
+    <!--    <title th:text="${title}"></title>-->
 </head>
 <body>
 
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<h3 th:text="${post.title}"></h3>
-<p th:text="${post.body}"></p>
+<div class="container-fluid">
+    <h1 style="text-align: center">Check this out!</h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h3 th:text="${post.title}"></h3>
+                    <p th:text="${post.body}"></p>
+                    <a class="btn btn-info btn-sm" th:href="@{/posts}">All Ads</a>
+                    <a class="btn btn-dark btn-sm" th:href="@{'/posts/edit/' + ${post.id}}">Edit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
