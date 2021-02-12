@@ -59,6 +59,7 @@ public class PostController {
 
     @GetMapping("/posts/edit/{id}")
     public String edit(@PathVariable Long id, Model model) {
+        model.addAttribute("title", "Edit Post");
         Post postToEdit = postsDao.getOne(id);
         model.addAttribute("post", postToEdit);
         return "posts/edit";
