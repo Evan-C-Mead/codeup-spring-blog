@@ -12,7 +12,8 @@
 
 <div class="container">
         <h1>Edit your post</h1>
-        <form th:action="@{/posts/edit/{id}}" method="post">
+        <form action="/posts/edit" method="post">
+            <input style="visibility: hidden" type="text" name="id" th:value="${post.id}">
             <div class="form-group">
                 <label for="title">Title</label>
                 <input id="title" name="title" class="form-control" type="text" th:value="${post.title}">

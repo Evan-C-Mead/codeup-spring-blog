@@ -64,8 +64,8 @@ public class PostController {
         return "posts/edit";
     }
 
-    @PostMapping("/posts/edit/{id}")
-    public String edited(@PathVariable Long id, @RequestParam String title, @RequestParam String body) {
+    @PostMapping("/posts/edit")
+    public String edited(@RequestParam Long id, @RequestParam String title, @RequestParam String body) {
         Post post = postsDao.getOne(id);
         post.setTitle(title);
         post.setBody(body);
