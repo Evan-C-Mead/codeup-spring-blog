@@ -16,6 +16,8 @@
 <div th:each="post : ${posts}">
     <h3 th:text="${post.title}"></h3>
     <p th:text="${post.body}"></p>
+    <a class="btn btn-dark btn-sm" th:href="@{'/posts/edit/' + ${post.id}}">Edit</a>
+    <a class="btn btn-danger btn-sm" th:href="@{'/posts/delete/' + ${post.id}}">Delete</a>
 </div>
 
 </body>
