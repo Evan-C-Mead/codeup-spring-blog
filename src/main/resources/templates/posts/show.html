@@ -11,13 +11,13 @@
 
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<div class="container-fluid">
+<div class="container">
     <h1 style="text-align: center">Check this out!</h1>
 </div>
 
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col-12 col-md-6 col-lg-4">
             <div class="card">
                 <div class="card-body">
                     <h3 th:text="${post.title}"></h3>

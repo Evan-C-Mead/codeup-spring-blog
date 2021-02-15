@@ -9,7 +9,7 @@ public class RollController {
 
     @GetMapping("/roll-dice")
     public String rollView() {
-        return "roll";
+        return "dice/roll";
     }
 
     @GetMapping("/roll-dice/{number}")
@@ -26,7 +26,7 @@ public class RollController {
         model.addAttribute("message", message);
         model.addAttribute("number", number);
         model.addAttribute("random", random);
-        return "rolled-dice";
+        return "dice/rolled-dice";
     }
 
 }
