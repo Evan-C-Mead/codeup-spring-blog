@@ -47,16 +47,13 @@ public class PostController {
     }
 
     @PostMapping("/posts/create")
-    public String createPost(@RequestParam String title, @RequestParam String body) {
-        Post post = new Post();
-        post.setTitle(title);
-        post.setBody(body);
+    public String createPost(@ModelAttribute Post post) {
 
         User user = usersDao.findAll().get(0);
         post.setUser(user);
 
         postsDao.save(post);
-        return "redirect:/posts/" + post.getId();
+        return "redirect:/posts";
     }
 
     @GetMapping("/posts/delete/{id}")
