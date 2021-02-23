@@ -1,6 +1,7 @@
 package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
+import com.codeup.springblog.models.User;
 import com.codeup.springblog.repositories.PostRepository;
 import com.codeup.springblog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
@@ -39,16 +40,23 @@ public class PostController {
         return "posts/show";
     }
 
-    @RequestMapping(path = "/posts/create", method = RequestMethod.GET)
-    @ResponseBody
-    public String create() {
-        return "view the form for creating a post";
+    @GetMapping("/posts/create")
+    public String postForm(Model model){
+        model.addAttribute("post", new Post());
+        return "posts/create";
     }
 
-    @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
-    @ResponseBody
-    public String creating() {
-        return "creating a new post";
+    @PostMapping("/posts/create")
+    public String createPost(@RequestParam String title, @RequestParam String body) {
+        Post post = new Post();
+        post.setTitle(title);
+        post.setBody(body);
+
+        User user = usersDao.findAll().get(0);
+        post.setUser(user);
+
+        postsDao.save(post);
+        return "redirect:/posts/" + post.getId();
     }
 
     @GetMapping("/posts/delete/{id}")
