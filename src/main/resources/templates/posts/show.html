@@ -21,6 +21,7 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h3 th:text="${post.title}"></h3>
+                    <hr>
                     <p th:text="${post.body}"></p>
                     <p>Posted by: <span th:text="${post.user.email}"></span></p>
                     <a class="btn btn-info btn-sm" th:href="@{/posts}">All Ads</a>
