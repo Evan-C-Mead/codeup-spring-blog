@@ -17,9 +17,6 @@
 <div class="container">
         <h1>Create a post</h1>
         <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
-            <label>
-                <input style="visibility: hidden" type="text" name="id" th:value="${post.id}">
-            </label>
             <div class="form-group">
                 <label for="title">Title</label>
                 <input class="form-control" type="text" id="title" th:field="*{title}" />

@@ -68,16 +68,14 @@ public class PostController {
     @GetMapping("/posts/edit/{id}")
     public String edit(@PathVariable Long id, Model model) {
         model.addAttribute("title", "Edit Post");
-        Post postToEdit = postsDao.getOne(id);
-        model.addAttribute("post", postToEdit);
+        model.addAttribute("post", postsDao.getOne(id));
         return "posts/edit";
     }
 
-    @PostMapping("/posts/edit")
-    public String edited(@RequestParam Long id, @RequestParam String title, @RequestParam String body) {
-        Post post = postsDao.getOne(id);
-        post.setTitle(title);
-        post.setBody(body);
+    @PostMapping("/posts/edit/{id}")
+    public String edited(@PathVariable long id, @ModelAttribute Post post) {
+        User user = usersDao.findAll().get(0);
+        post.setUser(user);
         postsDao.save(post);
         return "redirect:/posts";
     }
