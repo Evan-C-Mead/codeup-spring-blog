@@ -56,7 +56,7 @@ public class PostController {
     @PostMapping("/posts/create")
     public String createPost(@ModelAttribute Post post) {
 
-        User user = userService.loggedInUser();
+        User user = userService.getLoggedInUser();
         post.setUser(user);
 
         Post savedPost = postsDao.save(post);
@@ -89,7 +89,7 @@ public class PostController {
 
     @PostMapping("/posts/edit/{id}")
     public String edited(@PathVariable long id, @ModelAttribute Post post) {
-        User user = userService.loggedInUser();
+        User user = userService.getLoggedInUser();
         post.setUser(user);
         postsDao.save(post);
         return "redirect:/posts";

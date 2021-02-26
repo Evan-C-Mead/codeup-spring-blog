@@ -17,6 +17,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="/roll-dice">Roll Dice</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="sign-up">Sign Up</a>
+            </li>
+            <li class="nav-item">
+            <form th:action="@{/logout}" th:method="post">
+                <a class="nav-link" href="login">Logout</a>
+            </form>
+        </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control form-control-sm mr-sm-2" type="search" placeholder="Search" aria-label="Search">

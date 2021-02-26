@@ -13,7 +13,7 @@ public class UserService {
         this.usersDao = usersDao;
     }
 
-    public User loggedInUser() {
+    public User getLoggedInUser() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         long userId = user.getId();
         return usersDao.findById(userId).get();
