@@ -20,12 +20,14 @@ import java.util.Optional;
 public class PostController {
 
     private final PostRepository postsDao;
+    private final UserRepository usersDao;
     private final UserService userService;
     private final EmailService emailService;
 
 
-    public PostController(PostRepository postsDao, UserService userService, EmailService emailService) {
+    public PostController(PostRepository postsDao, UserRepository usersDao, UserService userService, EmailService emailService) {
         this.postsDao = postsDao;
+        this.usersDao = usersDao;
         this.userService = userService;
         this.emailService = emailService;
     }
@@ -46,7 +48,7 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    public String postForm(Model model){
+    public String postForm(Model model) {
         model.addAttribute("post", new Post());
         return "posts/create";
     }
@@ -60,11 +62,11 @@ public class PostController {
         Post savedPost = postsDao.save(post);
 
         String subject = "New Post Created: " + savedPost.getTitle();
-		String body = "Dear " + savedPost.getUser().getUsername()
-				+ ". Thank you for creating an ad. Your ad id is "
-				+ savedPost.getId() + ". This is what you posted: "
+        String body = "Dear " + savedPost.getUser().getUsername()
+                + ". Thank you for creating an ad. Your ad id is "
+                + savedPost.getId() + ". This is what you posted: "
                 + savedPost.getBody() + ".";
-		emailService.prepareAndSend(savedPost, subject, body);
+        emailService.prepareAndSend(savedPost, subject, body);
 
         return "redirect:/posts";
     }
