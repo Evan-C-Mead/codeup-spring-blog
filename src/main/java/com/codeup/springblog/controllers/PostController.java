@@ -72,7 +72,7 @@ public class PostController {
     }
 
     @GetMapping("/posts/delete/{id}")
-    public RedirectView deletePost(@PathVariable Long id) {
+    public RedirectView deletePost(@PathVariable Long id, @ModelAttribute Post post) {
         if (postsDao.findById(id).isPresent()) {
             postsDao.deleteById(id);
             return new RedirectView("/posts");
