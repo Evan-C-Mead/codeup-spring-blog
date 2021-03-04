@@ -32,7 +32,7 @@ public class PostController {
         this.emailService = emailService;
     }
 
-    @GetMapping(path = "/posts")
+    @GetMapping("/posts")
     public String index(Model model) {
         List<Post> posts = postsDao.findAll();
         model.addAttribute("title", "All Posts");
@@ -40,7 +40,7 @@ public class PostController {
         return "posts/index";
     }
 
-    @GetMapping(path = "/posts/{id}")
+    @GetMapping("/posts/{id}")
     public String indexById(@PathVariable Long id, Model model) {
         model.addAttribute("title", "Single Post");
         model.addAttribute("post", postsDao.getOne(id));
