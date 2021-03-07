@@ -35,26 +35,28 @@ public class PostController {
     @GetMapping("/posts")
     public String index(Model model) {
         List<Post> posts = postsDao.findAll();
-        model.addAttribute("title", "All Posts");
+        model.addAttribute("title", "All posts");
         model.addAttribute("posts", posts);
         return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
     public String indexById(@PathVariable Long id, Model model) {
-        model.addAttribute("title", "Single Post");
+        model.addAttribute("title", "Single post says:");
         model.addAttribute("post", postsDao.getOne(id));
         return "posts/show";
     }
 
     @GetMapping("/posts/create")
     public String postForm(Model model) {
+        model.addAttribute("title", "Make a post");
         model.addAttribute("post", new Post());
         return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    public String createPost(@ModelAttribute Post post) {
+    public String createPost(@ModelAttribute Post post, Model model) {
+        model.addAttribute("title", "Make a post");
 
         User user = userService.getLoggedInUser();
         post.setUser(user);

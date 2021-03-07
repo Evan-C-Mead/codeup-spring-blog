@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.*;
 public class RollController {
 
     @GetMapping("/roll-dice")
-    public String rollView() {
+    public String rollView(Model model) {
+        model.addAttribute("title", "Let's roll some dice");
         return "dice/roll";
     }
 
@@ -23,6 +24,7 @@ public class RollController {
             message = "Sorry, try again.";
         }
 
+        model.addAttribute("title", "Rolled results");
         model.addAttribute("message", message);
         model.addAttribute("number", number);
         model.addAttribute("random", random);

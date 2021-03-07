@@ -22,23 +22,27 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String home() {
-        return "posts/index";
+    public String home(Model model) {
+        model.addAttribute("title", "Home page");
+        return "index";
     }
 
     @GetMapping("/login")
-    public String showLoginForm() {
+    public String showLoginForm(Model model) {
+        model.addAttribute("title", "Login");
         return "login";
     }
 
     @GetMapping("/sign-up")
     public String showSignUpForm(Model model) {
+        model.addAttribute("title", "Sign up!");
         model.addAttribute("user", new User());
         return "sign-up";
     }
 
     @PostMapping("/sign-up")
-    public String signUpUser(@ModelAttribute User user) {
+    public String signUpUser(@ModelAttribute User user, Model model) {
+        model.addAttribute("title", "Sign up!");
         String hash = encoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);

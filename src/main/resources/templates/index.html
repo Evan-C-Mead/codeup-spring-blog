@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header :: head">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+</head>
+<body>
+
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+<div class="container" style="text-align: center">
+    <h1>Welcome to Meadalicious.tech</h1>
+</div>
+
+<div class="container" style="text-align: center">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <img class="card-img-top" src="/img/hex-lights.jpg" alt="hex-lights">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="partials/scripts :: scripts"></div>
+
+</body>
+</html>
