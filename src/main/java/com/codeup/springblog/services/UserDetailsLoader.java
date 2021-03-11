@@ -2,6 +2,7 @@ package com.codeup.springblog.services;
 
 import com.codeup.springblog.models.User;
 import com.codeup.springblog.models.UserWithRoles;
+import com.codeup.springblog.repositories.Roles;
 import com.codeup.springblog.repositories.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -23,7 +24,9 @@ public class UserDetailsLoader implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("No user found for " + username);
         }
-        UserDetails enhancedUser =  new UserWithRoles(user);
+        Roles roles = null;
+        assert false;
+        UserDetails enhancedUser =  new UserWithRoles(user, roles.ofUserWith(username));
         return enhancedUser;
     }
 }

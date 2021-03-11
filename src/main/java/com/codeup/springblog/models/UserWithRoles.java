@@ -5,16 +5,17 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 
 public class UserWithRoles extends User implements UserDetails {
 
-    public UserWithRoles(User copy) {
+    public UserWithRoles(User copy, List<String> strings) {
         super(copy);
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        String roles = "";
+        String roles = "user";
         return AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
     }
 
